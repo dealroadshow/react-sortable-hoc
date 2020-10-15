@@ -11,7 +11,7 @@ const external = (id) => !id.startsWith('.') && !id.startsWith('/');
 const babelConfig = (
   {useESModules, targets} = {
     useESModules: true,
-    targets: {browsers: ['last 3 versions', 'safari >= 7', 'ie >= 11']},
+    targets: {browsers: ['last 3 versions', 'safari >= 10', 'ie >= 11']},
   },
 ) => ({
   comments: false,
@@ -50,7 +50,7 @@ const umdConfig = ({minify} = {}) => ({
     resolve(),
     babel(
       babelConfig({
-        targets: {browsers: ['last 3 versions', 'safari >= 7', 'ie >= 11']},
+        targets: {browsers: ['last 3 versions', 'safari >= 10', 'ie >= 11']},
       }),
     ),
     replace({
