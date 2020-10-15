@@ -11,7 +11,7 @@ const external = (id) => !id.startsWith('.') && !id.startsWith('/');
 const babelConfig = (
   {useESModules, targets} = {
     useESModules: true,
-    targets: {browsers: 'last 2 versions'},
+    targets: {browsers: ['last 2 versions', 'safari >= 10', 'ie >= 11']},
   },
 ) => ({
   comments: false,
@@ -38,7 +38,7 @@ const umdConfig = ({minify} = {}) => ({
   external: ['react', 'react-dom', 'prop-types'],
   output: {
     name: 'SortableHOC',
-    file: minify ? pkg["umd:main"].replace('.js', '.min.js') : pkg["umd:main"],
+    file: minify ? pkg['umd:main'].replace('.js', '.min.js') : pkg['umd:main'],
     format: 'umd',
     globals: {
       react: 'React',
@@ -50,7 +50,7 @@ const umdConfig = ({minify} = {}) => ({
     resolve(),
     babel(
       babelConfig({
-        targets: {browsers: ['last 2 versions', 'safari >= 7']},
+        targets: {browsers: ['last 2 versions', 'safari >= 10', 'ie >= 11']},
       }),
     ),
     replace({
@@ -59,7 +59,7 @@ const umdConfig = ({minify} = {}) => ({
       ),
     }),
     commonjs(),
-    minify ? uglify() : { },
+    minify ? uglify() : {},
     filesize(),
   ],
 });
